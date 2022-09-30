@@ -1,0 +1,10 @@
+/*
+Student Name: Alfej Savaya
+ID: 118823210
+Email: aasavaya@myseneca.ca
+Date: 25/09/2022
+
+I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+*/
+
+While doing this workshop I have learned about a new library called chrono which gives a precise data for the time in different context. I have used the start and end to indicate the time when the program starts and end when the program will ends. And to calculate the time period for the start and end of the program. I have used a command called duration with the chrono library to find the time period from star to end of the program in nanoseconds. Another new concepts that I learned is move constructor and move assignment operator. These use the property where the R-value is an expression which have no memory and l-value is an expression which will have the memory. It is basically used to move the data without the need of copying, and we can directly move.

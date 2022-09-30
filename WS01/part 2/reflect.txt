@@ -1,0 +1,11 @@
+/*
+Student Name: Alfej Savaya
+ID: 118823210
+Email: aasavaya@myseneca.ca
+Date: 18/09/2022
+
+I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+*/
+
+In the workshop 1 I have practiced the concept of linkage, storage duration. The most confusing thing is the extern linkage. When I read the study material and after the lecture, it seems quite easy to understand, however, when it comes to practice, I am confused for a while. At first, I am not sure where should I have the extern linkage, in a head file or an implement file, I read the note and watch the lecture again, try to find the answer from Google, then I decide to put it in the head file. After that, there still have a problem, I got an error when I put the external linkage into the namespace.
+After trying, I finally find a way that put the extern linkage outside the namespace, but I still don't know why. About the storage duration,  I realized that in the instruction it said "COUNTER that holds the number of times that this function has been called (use a local-to-function variable that remains in memory for the lifetime of the program". So I used the static keyword.
