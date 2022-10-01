@@ -1,5 +1,6 @@
 #ifndef SDDS_DICTIONARY_H
 #define SDDS_DICTIONARY_H
+#include <iostream>
 
 namespace sdds {
 class Dictionary {
@@ -13,13 +14,14 @@ public:
     // TODO: Code the missing prototype functions and operators
     //       that the class needs in order to work with the Queue class.
     //       Implement them in the Dictionary.cpp file.
+    const std::string& getTermConst() const { return m_term; }
     Dictionary() : m_term { "" }, m_definition { "" } {}
 
     std::ostream& display(std::ostream& ostr = std::cout);
 
     };
-std::ostream& operator<<(std::ostream& ostr, Dictionary& dictionary);
-bool operator==(const Dictionary& lhs, const Dictionary& rhs);
+    std::ostream& operator<<(std::ostream& ostr, Dictionary& dictionary);
+    bool operator==(const Dictionary& lhs, const Dictionary& rhs);  
 }
 
 #endif // !SDDS_DICTIONARY_H

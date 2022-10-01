@@ -9,6 +9,7 @@ namespace sdds {
         unsigned int m_size{};
         T dummy{};
     public:
+        Queue(){};
         bool push(const T& item) {
             bool add = false;
             if (m_size < CAPACITY) {
@@ -19,7 +20,14 @@ namespace sdds {
             return add;
         }
 
-        void pop() {} // TO WORK ===-0---==0-=
+        void pop() {
+			T tempQueue = m_item[0];
+			for (size_t i = 0; i < m_size - 1; i++) {
+				m_item[i] = m_item[i + 1];
+			}
+			if (m_size > 0) m_size--;
+			return tempQueue;
+		}
 
 
         unsigned int size() const { return m_size; }
@@ -39,18 +47,20 @@ namespace sdds {
 
 
         T& operator[](unsigned int index) {
-            if (index >= 0 && index < m_size){
-                m_item[index];
-            }
-            return dummy;
+            // if (index >= 0 && index < m_size){
+            //     m_item[index];
+            // }
+            // return dummy;
+        return index < m_size ? m_item[index] : dummy;
         }
+
     };
 
-    // template<>
-    // Queue<Dictionary, 100>::Queue() {
-    //     Dictionary a("Empty Term", "Empty Substitute")
-    //     dummy = a;
-    // }
+    template<>
+    Queue<Dictionary, 100>::Queue() {
+        Dictionary a("Empty Term", "Empty Substitute");
+        dummy = a;
+    }
 }
 
 #endif // !SDDS_QUEUE_H

@@ -1,15 +1,18 @@
 #ifndef SDDS_UNIQUEQUEUE_H
 #define SDDS_UNIQUEQUEUE_H
 
+#include <iostream>
+
 #include "Queue.h"
 
 namespace sdds {
     template<typename T> 
     class UniqueQueue : public Queue<T, 100> {
-        double count(const double& D) {
+        double tempCount(const double& D) {
             return D < 0 ? -D : D;
-        } 
-    public: 
+        }
+
+    public:
         bool push(const T& item) {
             bool add = false;
             for(unsigned int i = 0; i < this->size(); i++) {
@@ -19,19 +22,19 @@ namespace sdds {
             }
             return (add == true) ? false : Queue<T, 100>::push(item);
         }
+    };
 
 
     template<>
     bool UniqueQueue<double>::push(const double& item) {
         bool add = false;
         for (unsigned int i = 0; i < this->size(); i++) {
-            if(count((*this)[i] -  item) <= 0.05){
+            if (tempCount((*this)[i] - item) <= 0.05) {
                 add = true;
             }
         }
-        return (add == false) ? false : Queue<double, 100>::push(item);
+        return (add == true) ? false : Queue<double, 100>::push(item);
     }
-    };
 }
 
 

@@ -17,5 +17,6 @@ namespace sdds {
 
     ostream& operator<<(std::ostream& ostr, Dictionary& dictionary) {
         return dictionary.display(ostr);
+        
     }
 }

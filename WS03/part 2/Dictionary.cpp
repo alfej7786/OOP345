@@ -20,6 +20,6 @@ namespace sdds {
     }
 
     bool operator==(const Dictionary& lhs, const Dictionary& rhs) {
-        return lhs.getTerm() == rhs.getTerm();
+        return lhs.getTermConst() == rhs.getTermConst();
     }
 }
