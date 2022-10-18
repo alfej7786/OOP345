@@ -1,40 +1,48 @@
+/*
+Student Name: Alfej Savaya
+ID: 118823210
+Email: aasavaya@myseneca.ca
+Date: 02/10/2022
+
+I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+*/
+
 #ifndef SDDS_UNIQUEQUEUE_H
 #define SDDS_UNIQUEQUEUE_H
 
 #include <iostream>
+#include <cmath>
+#include <string>
 
 #include "Queue.h"
+#include "Dictionary.h"
 
 namespace sdds {
     template<typename T> 
     class UniqueQueue : public Queue<T, 100> {
-        double tempCount(const double& D) {
-            return D < 0 ? -D : D;
-        }
 
-    public:
+    public: 
+        UniqueQueue() { ; }
         bool push(const T& item) {
-            bool add = false;
-            for(unsigned int i = 0; i < this->size(); i++) {
-                if(item == (*this)[i]) {
-                    add = true;
+            for(size_t i = 0; i < this->size(); i++) {
+                if(item == this->m_item[i]) {
+                    return false;
                 }
             }
-            return (add == true) ? false : Queue<T, 100>::push(item);
+            return Queue<T, 100>::push(item);
         }
     };
 
 
     template<>
     bool UniqueQueue<double>::push(const double& item) {
-        bool add = false;
-        for (unsigned int i = 0; i < this->size(); i++) {
-            if (tempCount((*this)[i] - item) <= 0.05) {
-                add = true;
+        for (unsigned int i = 0; i < this->m_size; i++) {
+            if (std::fabs(item - this->m_item[i]) <= 0.005) {
+                return false;
             }
         }
-        return (add == true) ? false : Queue<double, 100>::push(item);
-    }
+        return Queue<double, 100>::push(item);
+    };
 }
 
 

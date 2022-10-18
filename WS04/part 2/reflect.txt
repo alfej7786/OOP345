@@ -1,0 +1,10 @@
+/*
+Student Name: Alfej Savaya
+ID: 118823210
+Email: aasavaya@myseneca.ca
+Date: 08/10/2022
+
+I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+*/
+
+In this workshop, I have learnt various concepts which include different types of class relationships, extracting string data into small tokens and using array of pointers to objects. Firstly, I learnt two types of class relationships which are composition and aggregation. The Reservation and Restaurant classes have composition relationship in this workshop as Restaurant objects are responsible for the destruction of the Reservation objects. On the other hand, the Reservation and ConfirmationSender classes have aggregation relationship with each other. Secondly, I created TRIM function and used string library functions substr(), find(), erase() to extract data from a string which contained unwanted whitespaces which I cleared and then extracted the tokens into the instance variables of the reservation class. I also overloaded the insertion(<<) operators in the module so that we can simply output the objects using the insertion(<<) operator. Lastly, I created a ConfirmationSender module which managed the dynamically allocated array of pointers to objects which was used to receive reservations from more than one restaurant and store the data accordingly.

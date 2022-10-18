@@ -1,0 +1,10 @@
+/*
+Student Name: Alfej Savaya
+ID: 118823210
+Email: aasavaya@myseneca.ca
+Date: 02/10/2022
+
+I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+*/
+
+Specializing the push function helps the compiler run the specialized version of the function when a double value is received in the parameters. We need to define the class variable outside the class to allow the compiler to allocate memory for it. We don't split the templated modules into *.h and *.cpp because the code when using the templated class needs to access the templates and that is why we prefer to have all the code in a single file that is the header file. In the Dictionary module I added a function getKeyConst() that works exactly like getKey() I just defined the function to be constant so that I can call the function when accessing it through the operator '=='. I also defined a default constructor. A const display function was also defined to display the values in the Dictionary class and an overload of the extraction operator to print it values using the object. The last function that I defined the overload of comparision operator '=='.

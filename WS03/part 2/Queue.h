@@ -1,3 +1,12 @@
+/*
+Student Name: Alfej Savaya
+ID: 118823210
+Email: aasavaya@myseneca.ca
+Date: 02/10/2022
+
+I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+*/
+
 #ifndef SDDS_QUEUE_H
 #define SDDS_QUEUE_H
 #include <iostream>
@@ -7,6 +16,7 @@ namespace sdds {
 
     template <typename T, unsigned int CAPACITY> 
     class Queue {
+    protected:
         T m_item[CAPACITY]{};
         unsigned int m_size{};
         T dummy{};
@@ -24,7 +34,7 @@ namespace sdds {
             return add;
         }
 
-        virtual void pop() {
+        T pop() {
 			T tempQueue = m_item[0];
 			for (size_t i = 0; i < m_size - 1; i++) {
 				m_item[i] = m_item[i + 1];
@@ -50,7 +60,7 @@ namespace sdds {
         }
 
 
-        virtual T& operator[](unsigned int index) {
+        T& operator[](unsigned int index) {
             return index < m_size ? m_item[index] : dummy;
         }
 

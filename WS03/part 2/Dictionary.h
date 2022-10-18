@@ -1,3 +1,12 @@
+/*
+Student Name: Alfej Savaya
+ID: 118823210
+Email: aasavaya@myseneca.ca
+Date: 02/10/2022
+
+I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+*/
+
 #ifndef SDDS_DICTIONARY_H
 #define SDDS_DICTIONARY_H
 #include <iostream>
@@ -17,10 +26,10 @@ public:
     const std::string& getTermConst() const { return m_term; }
     Dictionary() : m_term { "" }, m_definition { "" } {}
 
-    std::ostream& display(std::ostream& ostr = std::cout);
+    std::ostream& display(std::ostream& ostr = std::cout) const;
 
     };
-    std::ostream& operator<<(std::ostream& ostr, Dictionary& dictionary);
+    std::ostream& operator<<(std::ostream& ostr, const Dictionary& dictionary);
     bool operator==(const Dictionary& lhs, const Dictionary& rhs);  
 }
 
