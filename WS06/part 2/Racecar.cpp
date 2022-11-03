@@ -14,6 +14,6 @@ namespace sdds
     }
 
     double Racecar::topSpeed() const {
-        return Car::topSpeed() + (Car::topSpeed() * m_booster);
+        return (Car::topSpeed() + (Car::topSpeed() * m_booster));
     }
 }
