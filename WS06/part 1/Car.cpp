@@ -83,6 +83,6 @@ namespace sdds {
         out << left << (m_condition == New ? "new" : (m_condition == Used ? "used" : "broken")) << " | ";
         out.precision(2);
         out.width(6);
-        out << fixed << m_speed << " | ";
+        out << fixed << m_speed << " |";
     }
 }
