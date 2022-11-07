@@ -1,3 +1,12 @@
+/*
+Student Name: Alfej Savaya
+ID: 118823210
+Email: aasavaya@myseneca.ca
+Date: 06/11/2022
+
+I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+*/
+
 #ifndef SDDS_AUTOSHOP_H
 #define SDDS_AUTOSHOP_H
 
@@ -8,43 +17,24 @@
 #include "Vehicle.h"
 #include "Luxuryvan.h"
 
-namespace sdds
-{
-    class Autoshop
-    {
-    private:
-        /* data */
-        std::vector<Vehicle *> m_vehicles{};
-        std::vector<Luxuryvan *> m_lvehicles{};
+namespace sdds {
+	class Autoshop
+	{
+		std::vector<Vehicle*> m_vehicles;
+	public:
+		Autoshop();
+		Autoshop& operator +=(Vehicle* theVehicle);
+		void display(std::ostream& out)const;
+		~Autoshop();
 
-    public:
-        // Autoshop(/* args */);
-        Autoshop &operator+=(Vehicle *theVehicle);
-        void display(std::ostream &out) const;
-
-        template <typename T>
-        void select(T test, std::list<const Vehicle *> &vehicles)
-        {
-            for (auto v = m_vehicles.cbegin(); v != m_vehicles.cend(); ++v)
-            {
-                if (test(*v))
-                {
-                    vehicles.push_back(*v);
-                }
-            }
-        }
-        template <typename T>
-        void typev(T test, std::list < const Luxuryvan * > &lv)
-        {
-            for (auto v = m_lvehicles.cbegin(); v != m_lvehicles.cend(); ++v)
-            {
-                if (test(*v))
-                {
-                    lv.push_back(*v);
-                }
-            }
-        }
-        ~Autoshop();
-    };
+		template <typename T>
+		void select(T test, std::list<const Vehicle*>& vehicles) {
+			for (auto i = m_vehicles.begin(); i != m_vehicles.end(); i++) {
+				if (test(*i)) {
+					vehicles.push_back(*i);
+				}
+			}
+		}
+	};
 }
-#endif //! SDDS_AUTOSHOP_H
+#endif // !SDDS_AUTOSHOP_H

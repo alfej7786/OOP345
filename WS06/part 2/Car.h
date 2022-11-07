@@ -1,3 +1,11 @@
+/*
+Student Name: Alfej Savaya
+ID: 118823210
+Email: aasavaya@myseneca.ca
+Date: 06/11/2022
+
+I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+*/
 #ifndef SDDS_CAR_H
 #define SDDS_CAR_H
 
@@ -10,10 +18,9 @@ namespace sdds {
     {
     private:
         /* data */
-        std::string m_maker{};
-        enum Condition { New, Used, Broken };
-        Condition m_condition{};
-        double m_speed{};
+        std::string m_maker = "";
+		std::string m_condition = "";
+		double m_speed = 0;
     public:
         Car(/* args */);
         Car(std::istream& is);
@@ -21,6 +28,5 @@ namespace sdds {
         double topSpeed() const;
         void display(std::ostream& out) const;
     };
-    std::string& trim(std::string&);
 }
 #endif // !SDDS_CAR_H

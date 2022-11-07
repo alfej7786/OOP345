@@ -3,13 +3,13 @@
 
 using namespace std;
 namespace sdds {
-size_t Station::m_widthField = 0u;
-size_t Station::id_generator = 0u;
-    Station::Station() { ; }
+size_t Station::m_widthField = 1;
+size_t Station::id_generator = 0;
+    // Station::Station() { ; }
 
     Station::Station(const string& name) {
-        Utilities newName;
-        size_t next_pos = 0;
+        Utilities newName{};
+        size_t next_pos{};
         bool more = false;
 
         if (!name.empty())
@@ -33,7 +33,7 @@ size_t Station::id_generator = 0u;
     }
 
     size_t Station::getNextSerialNumber() {
-        return m_serialNumber;
+        return m_serialNumber++;
     }
 
     size_t Station::getQuantity() const {
@@ -41,24 +41,28 @@ size_t Station::id_generator = 0u;
     }
 
     void Station::updateQuantity() {
-        m_numOfItems--;
-        if (m_numOfItems < 0)
-        {
-            m_numOfItems = 0;
-        }
+        if (m_numOfItems > 0)
+	{
+		m_numOfItems--;
+	}
     }
 
     void Station::display(std::ostream& os, bool full) const {
-        if (!full)
-        {
-            os << left << setw(3) << m_stationID << " | " <<  left << setw(m_widthField) << 
-            m_name << " | " << setw(6) << m_serialNumber << " | " << endl;
-        }
-        else if(full)
-        {
-            os << left << setw(3) << m_stationID << " | " <<  left << setw(m_widthField) << 
-            m_name << " | " << setw(6) << m_serialNumber << " | " << right << setw(4) << 
-            m_numOfItems << " | " << m_description << endl;
-        }
+      os.width(3);
+      os.fill('0');
+      os << std::right << m_stationID << " | ";
+      os.width(m_widthField);
+      os.fill(' ');
+      os << std::left << m_name << " | ";
+      os.width(6);
+      os.fill('0');
+      os << std::right << m_serialNumber << " | ";
+      os.fill(' ');
+      if (full) {
+         // os << " ";
+         os.width(4);
+         os << std::right << m_numOfItems << " | " << m_description;
+      }
+      os << std::endl;
     }
 }

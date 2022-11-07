@@ -19,7 +19,7 @@ namespace sdds {
         static size_t m_widthField;
         static size_t id_generator;
     public:
-        Station(/* args */);
+        // Station(/* args */);
         Station(const std::string& record);
         const std::string& getItemName() const;
         size_t getNextSerialNumber();
@@ -28,5 +28,4 @@ namespace sdds {
         void display(std::ostream& os, bool full) const;
     };
 }
-
 #endif //!SDDS_STATION_H

@@ -1,3 +1,11 @@
+/*
+Student Name: Alfej Savaya
+ID: 118823210
+Email: aasavaya@myseneca.ca
+Date: 06/11/2022
+
+I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+*/
 #ifndef SDDS_VAN_H
 #define SDDS_VAN_H
 
@@ -12,21 +20,17 @@ namespace sdds {
     private:
         /* data */
         std::string m_maker{};
-        enum Type { Pickup, Minibus, Camper };
-        enum Condition { New, Used, Broken };
-        enum Purpose { Delivery, Passenger, Camping };
-        Type m_type{};
-        Condition m_condition{};
-        Purpose m_purpose{};
-        double m_speed{};
+		std::string m_type;
+		std::string m_condition;
+		std::string m_purpose;
+		double m_topSpeed;
     public:
-        Van(/* args */);
-        Van(std::istream& is);
-        std::string condition() const;
-        double topSpeed() const;
-        std::string type() const;
-        std::string usage() const;
-        void display(std::ostream& out) const;
+        Van(std::istream& in);
+		std::string usage() const;
+		std::string condition()const;
+		std::string type() const;
+		double topSpeed()const;
+		void display(std::ostream& out) const;
     };
     
 }

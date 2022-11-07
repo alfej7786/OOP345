@@ -1,0 +1,10 @@
+/*
+Student Name: Alfej Savaya
+ID: 118823210
+Email: aasavaya@myseneca.ca
+Date: 06/11/2022
+
+I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+*/
+
+In this workshop on lambda expressions, I learned how to use lambda expressions to capture input values through a series of conditions. The lambda expressions are able to pass a pointer to the letter function as the 2nd parameter.

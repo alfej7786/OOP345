@@ -2,58 +2,80 @@
 #include "Utilities.h"
 
 using namespace std;
-namespace sdds {
-    Utilities::Utilities() { ; }
+namespace sdds
+{
+    // Utilities::Utilities() { ; }
 
-    void Utilities::setFieldWidth(size_t newWidth) {
+    char Utilities::m_delimiter{','};
+
+    string &Utilities::trim(string &str)
+    {
+        bool trimmed = false;
+
+        while (!trimmed)
+        {
+            trimmed = true;
+            if (str.find(' ') == 0)
+            {
+                trimmed = false;
+                str.erase(str.begin());
+            }
+            if (str.size() > 0 &&
+                str.substr(str.size() - 1, 1).find(' ') != string::npos)
+            {
+                str.erase(str.end() - 1);
+                trimmed = false;
+            }
+        }
+        return str;
+    }
+
+    void Utilities::setFieldWidth(size_t newWidth)
+    {
         m_widthField = newWidth;
     }
 
-    size_t Utilities::getFieldWidth() const{
+    size_t Utilities::getFieldWidth() const
+    {
         return m_widthField;
     }
 
-    string Utilities::extractToken(const string& str, size_t& next_pos, bool& more) {
-        string token;
-        size_t pos; 
-        size_t cnt{ 0 };
-
-        pos = str.find(getDelimiter(), next_pos);
-        for (size_t i = next_pos; i < pos; i++)
+    string Utilities::extractToken(const string &str, size_t &next_pos, bool &more)
+    {
+        string token{};
+        size_t right = str.find(m_delimiter, next_pos);
+        if (right == next_pos)
         {
-            cnt++;
+            more = false;
+            throw("Invalid next position!");
         }
-        token = str.substr(next_pos, cnt);
-        next_pos = pos + 1;
-
-        try
+        if (right != string::npos)
         {
-            if (token.empty()) 
+            token = str.substr(next_pos, right - next_pos);
+            token = trim(token);
+            more = true;
+            if (m_widthField < right - next_pos)
             {
-                more = false;
-                throw "ERROR: No token.";
+                m_widthField = right - next_pos;
             }
-            else
-            {
-                more = true;
-                if (token.size() > getFieldWidth())
-                {
-                    setFieldWidth(token.size());
-                }
-            }
+            next_pos = right + 1;
         }
-        catch(const std::exception& e)
+        else
         {
-            std::cerr << e.what() << '\n';
+            token = str.substr(next_pos);
+            token = trim(token);
+            more = false;
         }
-        return token;        
+        return token;
     }
 
-    void Utilities::setDelimiter(char newDelimiter) {
+    void Utilities::setDelimiter(char newDelimiter)
+    {
         m_delimiter = newDelimiter;
     }
 
-    char Utilities::getDelimiter() {
+    char Utilities::getDelimiter()
+    {
         return m_delimiter;
     }
 }
