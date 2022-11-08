@@ -1,7 +1,7 @@
 // Name: Alfej Savaya
 // Seneca Student ID: 118823210
 // Seneca email: aasavaya@myseneca.ca
-// Date of completion:
+// Date of completion: 08-Nov-2022
 //
 // I confirm that I am the only author of this file
 //   and the content was created entirely by me.
@@ -17,9 +17,9 @@ namespace sdds {
     {
     private:
         /* data */
-        size_t m_widthField;
+        size_t m_widthField { 1 };
         static char m_delimiter;
-        std::string& trim(std::string& str);
+        // std::string& trim(std::string& str);
     public:
         // Utilities(/* args */);
         void setFieldWidth(size_t newWidth);

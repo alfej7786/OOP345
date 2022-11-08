@@ -4,22 +4,20 @@
 
 using namespace std;
 namespace sdds {
-    CrimeStatistics::CrimeStatistics(/* args */) { ; }
+    // CrimeStatistics::CrimeStatistics(/* args */) { ; }
 
     string& CrimeStatistics::trim(string& str) {
         bool trim = false;
-    
-        while (!trim)
-        {
-            trim = false;
-            if (str.find(' ') == 0)
+
+        while (!trim) {
+            trim = true;
+            if (str.find(' ') == 0) 
             {
                 trim = false;
                 str.erase(str.begin());
             }
-            if (str.size() > 0 && str.substr(str.size() -1, 1).find(' ') != string::npos)
-            {
-                str.erase(str.end() -1);
+            if (str.size() > 0 && str.substr(str.size() - 1, 1).find(' ') != std::string::npos) {
+                str.erase(str.end() - 1);
                 trim = false;
             }
         }
@@ -91,31 +89,33 @@ namespace sdds {
         out << "| ";
         out.width(21);
         out.fill(' ');
-        out << theCrime.m_province << " | ";
+        out << left << theCrime.m_province << " | ";
 
         // District
         out.width(15);
         out.fill(' ');
-        out << theCrime.m_district << " | ";
+        out << left << theCrime.m_district << " | ";
 
         // Crime
         out.width(20);
         out.fill(' ');
-        out << theCrime.crime << " | ";
+        out << left << theCrime.crime << " | ";
 
         // Year
         out.width(6);
         out.fill(' ');
-        out << theCrime.m_year << " | ";
+        out << right << theCrime.m_year << " | ";
 
         // Cases
         out.width(4);
         out.fill(' ');
-        out << theCrime.m_numOfCases << " | ";
+        out << right << theCrime.m_numOfCases << " | ";
 
         // Cases Resolved
         out.width(3);
         out.fill(' ');
-        out << theCrime.m_numOfresolved << " |";
+        out << right << theCrime.m_numOfresolved << " |";
+
+        return out;
     }
 }

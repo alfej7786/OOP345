@@ -23,7 +23,7 @@ namespace sdds {
         std::vector<Crime> m_crime;
         std::string& trim(std::string& str);
     public:
-        CrimeStatistics(/* args */);
+        // CrimeStatistics(/* args */);
         CrimeStatistics(const char* filename);
         void display(std::ostream& out) const;
     };

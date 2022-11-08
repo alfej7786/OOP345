@@ -1,4 +1,12 @@
+// Name: Alfej Savaya
+// Seneca Student ID: 118823210
+// Seneca email: aasavaya@myseneca.ca
+// Date of completion: 08-Nov-2022
+//
+// I confirm that I am the only author of this file
+//   and the content was created entirely by me.
 
+#include <algorithm>
 #include "Utilities.h"
 
 using namespace std;
@@ -6,28 +14,26 @@ namespace sdds
 {
     // Utilities::Utilities() { ; }
 
+    // static char m_delimiter;
     char Utilities::m_delimiter{','};
 
-    string &Utilities::trim(string &str)
+    static size_t trim(string &str, bool trimmed = false)
     {
-        bool trimmed = false;
 
-        while (!trimmed)
+        if (trimmed)
         {
-            trimmed = true;
-            if (str.find(' ') == 0)
+            for (size_t i = str.length() - 1; i >= 0; i--)
             {
-                trimmed = false;
-                str.erase(str.begin());
-            }
-            if (str.size() > 0 &&
-                str.substr(str.size() - 1, 1).find(' ') != string::npos)
-            {
-                str.erase(str.end() - 1);
-                trimmed = false;
+                if (str[i] != ' ')
+                    return i;
             }
         }
-        return str;
+        for (size_t i = 0; i < str.length(); i++)
+        {
+            if (str[i] != ' ')
+                return i;
+        }
+        return 0;
     }
 
     void Utilities::setFieldWidth(size_t newWidth)
@@ -40,32 +46,28 @@ namespace sdds
         return m_widthField;
     }
 
-    string Utilities::extractToken(const string &str, size_t &next_pos, bool &more)
+    std::string Utilities::extractToken(const std::string &str, size_t &next_pos, bool &more)
     {
-        string token{};
-        size_t right = str.find(m_delimiter, next_pos);
-        if (right == next_pos)
+
+        size_t pos = str.find(m_delimiter, next_pos);
+        if (pos == next_pos)
         {
             more = false;
-            throw("Invalid next position!");
+            throw "pos = next_pos";
         }
-        if (right != string::npos)
+
+        string token = str.substr(next_pos, pos - next_pos);
+        token = token.substr(trim(token));
+        token = token.substr(0, trim(token, true) + 1);
+        m_widthField = std::max(token.length(), getFieldWidth());
+
+        if (pos != std::string::npos)
         {
-            token = str.substr(next_pos, right - next_pos);
-            token = trim(token);
+            next_pos = pos + 1;
             more = true;
-            if (m_widthField < right - next_pos)
-            {
-                m_widthField = right - next_pos;
-            }
-            next_pos = right + 1;
         }
         else
-        {
-            token = str.substr(next_pos);
-            token = trim(token);
             more = false;
-        }
         return token;
     }
 
