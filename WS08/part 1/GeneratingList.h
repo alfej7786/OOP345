@@ -34,10 +34,33 @@ namespace sdds {
 
 		//TODO: Implement the Luhn Algorithm to check the 
 		//      valadity of SIN No's
+		bool checkLuhn(const std::string str) {
+			size_t len = str.length();
+			size_t num = 0;
+			size_t sum = 0;
+
+			for (size_t i = 0; i < len; i++)
+			{
+				num = str[i] - '0';
+				if (i % 2 != 0)
+				{
+					num *= 2;
+					if (num > 9)
+					{
+						num -= 9;
+					}
+				}
+				sum += num;
+			}
+			return sum % 10 == 0;
+		}
 
 
 		//TODO: Overload the += operator with a raw pointer
 		// as a second operand.
+		void operator+=(T* object) {
+			list.push_back(*object);
+		}
 
 
 		void print(std::ostream& os) const {
