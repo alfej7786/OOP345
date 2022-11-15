@@ -1,0 +1,10 @@
+/*
+Student Name: Alfej Savaya
+ID: 118823210
+Email: aasavaya@myseneca.ca
+Date: 09/11/2022
+
+I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+*/
+
+In this workshop I used several STL functions like: for_each, sort, find_if, push_back, etc. I used the for_each query to iterate through all the elements of the CrimeStatistics. The sort function to sort the Province Name. Used the find_if function to find the matching variant that has been passed to the function. STL algorithms saves so much time. It is easier to sort things or to find a match in the containers. If we try to do it without the algorithms then it takes so much time developing the code and also the execution might take much more time as compared to the provided algorithms. We can also use enumeration but again we cannot do anything if an invalid input is passed. For an invalid input we can either set a default way to sort the data or ask again for the input.

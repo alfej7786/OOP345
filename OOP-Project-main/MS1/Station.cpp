@@ -16,24 +16,16 @@ size_t Station::id_generator = 0;
     // Station::Station() { ; }
 
     Station::Station(const string& name) {
-        Utilities newName{};
-        size_t next_pos{};
+        Utilities util{};
         bool more = false;
-
-        if (!name.empty())
-        {
-            more = true;
-        }
-        m_name = newName.extractToken(name, next_pos, more);
-        m_serialNumber = stoi(newName.extractToken(name, next_pos, more));
-        m_numOfItems = stoi(newName.extractToken(name, next_pos, more));
-        m_description = name.substr(next_pos);
+        size_t next_pos{};
         m_stationID = ++id_generator;
-        
-        if(m_widthField < newName.getFieldWidth())
-        {
-            m_widthField = newName.getFieldWidth();
-        }
+
+        m_name = util.extractToken(name, next_pos, more);
+        m_serialNumber = std::stoi(util.extractToken(name, next_pos, more));
+        m_numOfItems = std::stoi(util.extractToken(name, next_pos, more));
+        m_widthField = m_widthField > util.getFieldWidth() ? m_widthField : util.getFieldWidth();
+        m_description = util.extractToken(name, next_pos, more);
     }
 
     const string& Station::getItemName() const {
@@ -50,16 +42,16 @@ size_t Station::id_generator = 0;
 
     void Station::updateQuantity() {
         if (m_numOfItems > 0)
-	{
-		m_numOfItems--;
-	}
+        {
+            m_numOfItems--;
+        }
     }
 
     void Station::display(std::ostream& os, bool full) const {
       os.width(3);
       os.fill('0');
       os << std::right << m_stationID << " | ";
-      os.width(m_widthField);
+      os.width(m_widthField + 1);
       os.fill(' ');
       os << std::left << m_name << " | ";
       os.width(6);
