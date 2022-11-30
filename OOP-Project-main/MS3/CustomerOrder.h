@@ -1,7 +1,7 @@
 // Name: Alfej Savaya
 // Seneca Student ID: 118823210
 // Seneca email: aasavaya@myseneca.ca
-// Date of completion: 15-Nov-2022
+// Date of completion: 30-Nov-2022
 //
 // I confirm that I am the only author of this file
 //   and the content was created entirely by me.
@@ -10,10 +10,6 @@
 #define SDDS_CUSTOMERORDER_H
 #include <string>
 #include <iostream>
-#include <vector>
-#include <utility>
-#include <iomanip>
-#include "Utilities.h"
 #include "Station.h"
 namespace sdds
 {

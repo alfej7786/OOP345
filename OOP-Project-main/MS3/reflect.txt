@@ -1,0 +1,9 @@
+// Name: Alfej Savaya
+// Seneca Student ID: 118823210
+// Seneca email: aasavaya@myseneca.ca
+// Date of completion: 30-Nov-2022
+//
+// I confirm that I am the only author of this file
+//   and the content was created entirely by me.
+
+This was by far the toughest coding challenge especially Milestone 3. But I loved it and learned a lot from it, and help me understand the combination of all the concepts we learnt in this semester. However, the statement were not as easy to understand in one try so had to read many times to understand what it is asking to do, I could also interpret by thinking about the actual mechanism of the assembly line and the output given. I hope this helps me a lot when I do other programming tasks in future.
