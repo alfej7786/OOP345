@@ -1,0 +1,10 @@
+/*
+Student Name: Alfej Savaya
+ID: 118823210
+Email: aasavaya@myseneca.ca
+Date: 27/11/2022
+
+I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+*/
+
+For workshop 9, it was quite confusing for me, however after I read the note again, I find a way to solve the problem, but it still took time for me. I used bind in the findTreasure function to bind the arguments together. The bind is important in this workshop as we used multi-thread in it, and bind makes the calling easier. The advantage of multi-thread is that the same process can share the same memory, this means that will save the memory and spend less time.

@@ -1,3 +1,12 @@
+/*
+Student Name: Alfej Savaya
+ID: 118823210
+Email: aasavaya@myseneca.ca
+Date: 27/11/2022
+
+I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+*/
+
 // Workshop 9 - Multi-threading
 // TreasureMap.cpp
 // Michael Huang
@@ -5,9 +14,15 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
+#include <future>
+#include <thread>
+#include <functional>
 #include "TreasureMap.h"
 
 namespace sdds{
+
+    const size_t totalThreads = 4;
 
     size_t digForTreasure(const std::string& str, char mark){
         size_t cnt = 0;
@@ -110,9 +125,38 @@ namespace sdds{
         size_t count = 0;
 
         // TODO: For part 2, comment this "for" loop and write the multihreaded version.
-        for (size_t i = 0; i < rows; ++i){
-            count += digForTreasure(map[i], mark);
+        // for (size_t i = 0; i < rows; ++i){
+        //     count += digForTreasure(map[i], mark);
+        // }
+        size_t thread = 0;
+        std::string str[totalThreads];
+
+        auto dig = std::bind(digForTreasure, std::placeholders::_1, mark);
+        for (size_t i = 0; i < rows; i++) 
+        {
+           if (thread == totalThreads) 
+            {
+                thread = 0;
+            }
+            str[thread] += map[i];
+            thread++;
         }
+        std::packaged_task<std::size_t(std::string)> t1(dig);
+        std::packaged_task<std::size_t(std::string)> t2(dig);
+        std::packaged_task<std::size_t(std::string)> t3(dig);
+        std::packaged_task<std::size_t(std::string)> t4(dig);
+
+        auto f1 = t1.get_future();
+        auto f2 = t2.get_future();
+        auto f3 = t3.get_future();
+        auto f4 = t4.get_future();
+
+        t1(str[0]);
+        t2(str[1]);
+        t3(str[2]);
+        t4(str[3]);
+
+        count = f1.get() + f2.get() + f3.get() + f4.get();
 
         return count;
     }
